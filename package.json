@@ -1,0 +1,23 @@
+{
+	"name": "react-native-picasso",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/meienberger/react-native-picasso.git"
+	},
+	"author": "Nicolas Meienberger",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/meienberger/react-native-picasso/issues"
+	},
+	"homepage": "https://github.com/meienberger/react-native-picasso#readme",
+	"dependencies": {},
+	"devDependencies": {
+		"metro-react-native-babel-preset": "^0.63.0"
+	}
+}
