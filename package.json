@@ -1,23 +1,53 @@
 {
-	"name": "react-native-picasso",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/meienberger/react-native-picasso.git"
-	},
-	"author": "Nicolas Meienberger",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/meienberger/react-native-picasso/issues"
-	},
-	"homepage": "https://github.com/meienberger/react-native-picasso#readme",
-	"dependencies": {},
-	"devDependencies": {
-		"metro-react-native-babel-preset": "^0.63.0"
-	}
+  "name": "react-native-picasso",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run:linter": "eslint 'src/**/*.js'",
+    "build": "rm -rf dist && mkdir dist && babel ./src -d ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meienberger/react-native-picasso.git"
+  },
+  "author": "Nicolas Meienberger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meienberger/react-native-picasso/issues"
+  },
+  "homepage": "https://github.com/meienberger/react-native-picasso#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.11.6",
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.8.1",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-no-loops": "^0.3.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.0",
+    "eslint-plugin-react-native": "^3.9.1",
+    "metro-react-native-babel-preset": "^0.63.0",
+    "prettier": "^2.1.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-native": "^0.63.2"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-native": "^0.63.2"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@callstack/react-theme-provider": "^2.1.0"
+  }
 }
