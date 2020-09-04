@@ -9,9 +9,6 @@ const PicassoText = (props) => {
 
   const picassoStyle = buildStyleSheet(className, 'text', theme)
 
-  // console.log([picassoStyle, style])
-  // console.log(StyleSheet.flatten([picassoStyle, style]))
-
   return (
     <Text style={StyleSheet.flatten([picassoStyle, style])}>{children}</Text>
   )

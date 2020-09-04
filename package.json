@@ -48,6 +48,7 @@
     "src"
   ],
   "dependencies": {
-    "@callstack/react-theme-provider": "^2.1.0"
+    "deepmerge": "^4.2.2",
+    "hoist-non-react-statics": "^3.3.2"
   }
 }

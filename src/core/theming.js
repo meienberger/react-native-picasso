@@ -1,4 +1,4 @@
-import { createTheming } from '@callstack/react-theme-provider'
+import createTheming from './createTheming'
 import { defaultTheme } from '../styles/defaultTheme'
 
 export const { ThemeProvider, withTheme, useTheme } = createTheming(
