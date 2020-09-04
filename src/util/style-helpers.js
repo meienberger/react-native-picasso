@@ -1,8 +1,7 @@
 /* eslint-disable newline-after-var */
 import { StyleSheet } from 'react-native'
 import { splitAndValidate } from './classname-helpers'
-
-const spacingProperties = ['m', 'p']
+import { alignValues, flexValues, spacingProperties } from './constants'
 
 const classesToStyle = (array, theme) => {
   let styles = {}
@@ -15,12 +14,18 @@ const classesToStyle = (array, theme) => {
         ...styles,
         ...theme.elevated,
       }
+    } else if (property === 'bg') {
+      styles.backgroundColor = theme.colors[value]
+    } else if (property === 'color') {
+      styles.color = theme.textColors[value]
+    } else if (property === 'size') {
+      styles.fontSize = theme.font?.sized[value]
     } else if (property === 'weight') {
-      styles.fontWeight = theme.fontWeights[value]
+      styles.fontWeight = theme.font?.weights[value]
     } else if (property === 'align') {
-      styles.textAlign = value // use theme variable to prevent failure
+      styles.textAlign = alignValues[value]
     } else if (property === 'flex') {
-      styles.flexDirection = value
+      styles.flexDirection = flexValues[value]
     } else if (property === 'radius') {
       styles.borderRadius = theme.radius[value]
     } else {

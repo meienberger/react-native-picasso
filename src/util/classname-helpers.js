@@ -1,54 +1,31 @@
-const spacingValues = ['sm', 'md', 'lg', 'xl', 'xxl']
-const radiusValues = ['sm', 'md', 'lg', 'xl', 'xxl']
-const flexValues = ['row', 'column']
-const weightValues = ['bold', 'normal', 'light']
-const alignValues = ['left', 'right', 'center']
+// const spacingValues = ['sm', 'md', 'lg', 'xl', 'xxl']
+// const radiusValues = ['sm', 'md', 'lg', 'xl', 'xxl']
+// const flexValues = ['row', 'column']
+// const weightValues = ['bold', 'normal', 'light']
+// const alignValues = ['left', 'right', 'center']
 
-const validPropertiesBase = [
-  'm',
-  'mr',
-  'ml',
-  'mt',
-  'mb',
-  'mx',
-  'my',
-  'p',
-  'pr',
-  'pl',
-  'pt',
-  'pb',
-  'px',
-  'py',
-  'flex',
-]
-const validPropertiesView = ['elevated', 'radius', 'bg']
-const validPropertiesText = ['weight', 'align']
+import { validPropertiesBase, validPropertiesForType } from './constants'
 
-const validPropertiesForType = {
-  view: validPropertiesView,
-  text: validPropertiesText,
-}
-
-export const validValuesForProperty = {
-  m: spacingValues,
-  mr: spacingValues,
-  ml: spacingValues,
-  mt: spacingValues,
-  mb: spacingValues,
-  mx: spacingValues,
-  my: spacingValues,
-  p: spacingValues,
-  pr: spacingValues,
-  pl: spacingValues,
-  pt: spacingValues,
-  pb: spacingValues,
-  px: spacingValues,
-  py: spacingValues,
-  radius: radiusValues,
-  flex: flexValues,
-  weight: weightValues,
-  align: alignValues,
-}
+// export const validValuesForProperty = {
+//   m: spacingValues,
+//   mr: spacingValues,
+//   ml: spacingValues,
+//   mt: spacingValues,
+//   mb: spacingValues,
+//   mx: spacingValues,
+//   my: spacingValues,
+//   p: spacingValues,
+//   pr: spacingValues,
+//   pl: spacingValues,
+//   pt: spacingValues,
+//   pb: spacingValues,
+//   px: spacingValues,
+//   py: spacingValues,
+//   radius: radiusValues,
+//   flex: flexValues,
+//   weight: weightValues,
+//   align: alignValues,
+// }
 
 /**
  * Splits the classname and return an array of

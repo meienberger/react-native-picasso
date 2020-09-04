@@ -10,7 +10,15 @@ const PicassoText = (props) => {
   const picassoStyle = buildStyleSheet(className, 'text', theme)
 
   return (
-    <Text style={StyleSheet.flatten([picassoStyle, style])}>{children}</Text>
+    <Text
+      style={StyleSheet.flatten([
+        picassoStyle,
+        { fontFamily: theme.font?.family },
+        style,
+      ])}
+    >
+      {children}
+    </Text>
   )
 }
 

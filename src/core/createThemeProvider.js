@@ -1,5 +1,6 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
+import deepmerge from 'deepmerge'
 
 function createThemeProvider(defaultTheme, ThemeContext) {
   class ThemeProvider extends React.Component {
@@ -9,7 +10,9 @@ function createThemeProvider(defaultTheme, ThemeContext) {
 
     render() {
       return (
-        <ThemeContext.Provider value={this.props.theme}>
+        <ThemeContext.Provider
+          value={deepmerge(defaultTheme, this.props.theme)}
+        >
           {this.props.children}
         </ThemeContext.Provider>
       )
