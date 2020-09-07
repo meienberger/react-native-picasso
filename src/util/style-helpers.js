@@ -15,19 +15,23 @@ const classesToStyle = (array, theme) => {
         ...theme.elevated,
       }
     } else if (property === 'bg') {
-      styles.backgroundColor = theme.colors[value]
+      styles.backgroundColor = theme.colors?.[value]
     } else if (property === 'color') {
       styles.color = theme.textColors[value]
     } else if (property === 'size') {
-      styles.fontSize = theme.font?.sized[value]
+      styles.fontSize = theme.font?.sizes?.[value]
     } else if (property === 'weight') {
-      styles.fontWeight = theme.font?.weights[value]
+      styles.fontWeight = theme.font?.weights?.[value]
     } else if (property === 'align') {
       styles.textAlign = alignValues[value]
     } else if (property === 'flex') {
-      styles.flexDirection = flexValues[value]
+      if (flexValues[value]) {
+        styles.flexDirection = flexValues[value]
+      } else if (!Number.isNaN(Number(value))) {
+        styles.flex = Number(value)
+      }
     } else if (property === 'radius') {
-      styles.borderRadius = theme.radius[value]
+      styles.borderRadius = theme.radius?.[value]
     } else {
       // Getting values
       if (spacingProperties.includes(property[0])) {

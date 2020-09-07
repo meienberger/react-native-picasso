@@ -12,8 +12,8 @@ const PicassoText = (props) => {
   return (
     <Text
       style={StyleSheet.flatten([
+        { fontFamily: theme.font?.family, color: theme?.textColors?.primary },
         picassoStyle,
-        { fontFamily: theme.font?.family },
         style,
       ])}
     >

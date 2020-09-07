@@ -5,7 +5,7 @@ import { buildStyleSheet } from '../util/style-helpers'
 import { withTheme } from '../core/theming'
 
 const PicassoSafeView = ({ children, className = '', style, theme }) => {
-  const picassoStyle = buildStyleSheet(className, 'view')
+  const picassoStyle = buildStyleSheet(className, 'view', theme)
 
   return <SafeAreaView style={[picassoStyle, style]}>{children}</SafeAreaView>
 }
