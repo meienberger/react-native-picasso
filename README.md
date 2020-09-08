@@ -1,6 +1,11 @@
 # react-native-picasso 👨🏻‍🎨
 
-This is NOT yet another components library
+This is **NOT** yet another components library !
+
+[![npm](https://img.shields.io/npm/dm/react-native-picasso.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-picasso)
+[![npm](https://img.shields.io/npm/l/react-native-picasso.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-picasso)
+
+![demonstration](demo/demo.gif)
 
 ## Motivation
 
@@ -13,8 +18,6 @@ This will give your app a strong single source of truth. You declare your design
 
 This was heavily inspired by Bootstrap
 
-![demonstration](demo/demo.gif)
-
 ## Usage
 
 Picasso ships with a set of drop in replacements components. You can import the following three components : View, SafeAreaView, Text
@@ -25,7 +28,7 @@ import { View, Text, SafeAreaView } from 'react-native-picasso'
 
 All those components are sharing the same API as their usual react-native counter party. But they have an aditionnal prop called `className`. The className property consists of a string of pre-defined classes separated by a space.
 
-Classes are constructed the following way : {property}-{value}
+Classes are constructed the following way : `{property}-{value}`
 
 Using this string, you can describe the apparence of your components.
 
@@ -136,6 +139,28 @@ Here is a table of all the possible properties and values you can use inside a c
 
 Each value of each property is mapped to a specific section of the theme.
 
+## Examples
+
+```js
+<View className="p-md radius-md elevated">{/* Content */}<View>
+```
+
+Translates into
+
+```js
+<View style={{
+    padding: 16,
+    borderRadius: 10,
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5
+}}>
+    {/* Content */}
+<View>
+```
+
 ## Customizing the theme
 
 Picasso ships with a default theme. But you most probably won't use the default one and want to use your own colors, sizes and values.
@@ -174,4 +199,16 @@ export default App
 
 The ThemeProvider will look at your custom theme and apply those values to the default theme. This way, you can only override specific aspects of the theme and keep the default values for the rest.
 
-Be careful to follow the original structure of the theme. Otherwise your styles may not work
+Be careful to follow the original structure of the theme. Otherwise your styles may break.
+
+## Merging with classic styles
+
+Sometimes, the classes available are not sufficient for your specific need. In order to give you enough flexibility with the components, you can still use the default `style` property in combination with picasso classes.
+
+```js
+<View className="m-xl" style={{ opacity: 0.5 }} />
+```
+
+## TODO
+
+- [ ] TypeScript

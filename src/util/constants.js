@@ -6,6 +6,14 @@ export const alignValues = {
   right: 'right',
 }
 
+export const alignItemsValues = {
+  center: 'center',
+  'flex-start': 'flex-start',
+  'flex-end': 'flex-end',
+  stretch: 'stretch',
+  baseline: 'baseline',
+}
+
 export const flexValues = {
   row: 'row',
   column: 'column',
@@ -28,7 +36,14 @@ export const validPropertiesBase = [
   'py',
   'flex',
 ]
-const validPropertiesView = ['elevated', 'radius', 'bg']
+const validPropertiesView = [
+  'elevated',
+  'radius',
+  'bg',
+  'alignself',
+  'alignitems',
+  'justifycontent',
+]
 const validPropertiesText = ['weight', 'align', 'color', 'size']
 
 export const validPropertiesForType = {
