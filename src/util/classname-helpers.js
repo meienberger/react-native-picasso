@@ -1,31 +1,4 @@
-// const spacingValues = ['sm', 'md', 'lg', 'xl', 'xxl']
-// const radiusValues = ['sm', 'md', 'lg', 'xl', 'xxl']
-// const flexValues = ['row', 'column']
-// const weightValues = ['bold', 'normal', 'light']
-// const alignValues = ['left', 'right', 'center']
-
 import { validPropertiesBase, validPropertiesForType } from './constants'
-
-// export const validValuesForProperty = {
-//   m: spacingValues,
-//   mr: spacingValues,
-//   ml: spacingValues,
-//   mt: spacingValues,
-//   mb: spacingValues,
-//   mx: spacingValues,
-//   my: spacingValues,
-//   p: spacingValues,
-//   pr: spacingValues,
-//   pl: spacingValues,
-//   pt: spacingValues,
-//   pb: spacingValues,
-//   px: spacingValues,
-//   py: spacingValues,
-//   radius: radiusValues,
-//   flex: flexValues,
-//   weight: weightValues,
-//   align: alignValues,
-// }
 
 /**
  * Splits the classname and return an array of

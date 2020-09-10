@@ -14,12 +14,7 @@ const classesToStyle = (array, theme) => {
   array.forEach(({ property, value }) => {
     let values
 
-    if (property === 'elevated') {
-      styles = {
-        ...styles,
-        ...theme.elevated,
-      }
-    } else if (property === 'bg') {
+    if (property === 'bg') {
       styles.backgroundColor = theme.colors?.[value]
     } else if (property === 'color') {
       styles.color = theme.textColors[value]
@@ -43,12 +38,8 @@ const classesToStyle = (array, theme) => {
       }
     } else if (property === 'radius') {
       styles.borderRadius = theme.radius?.[value]
-    } else {
-      // Getting values
-      if (spacingProperties.includes(property[0])) {
-        values = theme.spacing
-      }
-
+    } else if (spacingProperties.includes(property)) {
+      values = theme.spacing
       let main = ''
       let side = ''
 
@@ -64,12 +55,19 @@ const classesToStyle = (array, theme) => {
 
       styles[`${main}${side}`] = values[value]
     }
+    // Custom root values like elevated
+    else {
+      styles = {
+        ...styles,
+        ...theme[property],
+      }
+    }
   })
 
   return styles
 }
 
-export const buildStyleSheet = (className, componentType = 'view', theme) => {
+export const buildStyleSheet = (className, componentType = 'custom', theme) => {
   const arrayClasses = splitAndValidate(className, componentType)
   const styles = StyleSheet.flatten(classesToStyle(arrayClasses, theme))
 

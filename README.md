@@ -18,6 +18,18 @@ This will give your app a strong single source of truth. You declare your design
 
 This was heavily inspired by Bootstrap
 
+## Installation
+
+```bash
+    yarn add react-native-picasso
+```
+
+or with npm
+
+```bash
+    npm i --save react-native-picasso
+```
+
 ## Usage
 
 Picasso ships with a set of drop in replacements components. You can import the following three components : View, SafeAreaView, Text
@@ -97,45 +109,48 @@ If we take the previous example, margin and padding are using the "spacing" valu
 
 Here is a table of all the possible properties and values you can use inside a className.
 
-### Base
+### Base (Available for all components)
 
-| Property | Possible values     | Description           |
-| -------- | ------------------- | --------------------- |
-| p        | sm, md, lg, xl, xxl | **padding**           |
-| pl       | sm, md, lg, xl, xxl | **paddingLeft**       |
-| pr       | sm, md, lg, xl, xxl | **paddingRight**      |
-| pt       | sm, md, lg, xl, xxl | **paddingTop**        |
-| pb       | sm, md, lg, xl, xxl | **paddingBottom**     |
-| px       | sm, md, lg, xl, xxl | **paddingHorizontal** |
-| py       | sm, md, lg, xl, xxl | **paddingVertical**   |
-| -------- | ------------------- | --------------------- |
-| m        | sm, md, lg, xl, xxl | **margin**            |
-| ml       | sm, md, lg, xl, xxl | **marginLeft**        |
-| mr       | sm, md, lg, xl, xxl | **marginRight**       |
-| mt       | sm, md, lg, xl, xxl | **marginTop**         |
-| mb       | sm, md, lg, xl, xxl | **marginBottom**      |
-| mx       | sm, md, lg, xl, xxl | **marginHorizontal**  |
-| my       | sm, md, lg, xl, xxl | **marginVertical**    |
-| -------- | ------------------- | --------------------- |
-| flex     | row, column         | **flexDirection**     |
-| flex     | any number          | **flex: value**       |
+| Property  | Possible values                                 | Description           |
+| --------- | ----------------------------------------------- | --------------------- |
+| p         | sm, md, lg, xl, xxl                             | **padding**           |
+| pl        | sm, md, lg, xl, xxl                             | **paddingLeft**       |
+| pr        | sm, md, lg, xl, xxl                             | **paddingRight**      |
+| pt        | sm, md, lg, xl, xxl                             | **paddingTop**        |
+| pb        | sm, md, lg, xl, xxl                             | **paddingBottom**     |
+| px        | sm, md, lg, xl, xxl                             | **paddingHorizontal** |
+| py        | sm, md, lg, xl, xxl                             | **paddingVertical**   |
+| --------  | -------------------                             | --------------------- |
+| m         | sm, md, lg, xl, xxl                             | **margin**            |
+| ml        | sm, md, lg, xl, xxl                             | **marginLeft**        |
+| mr        | sm, md, lg, xl, xxl                             | **marginRight**       |
+| mt        | sm, md, lg, xl, xxl                             | **marginTop**         |
+| mb        | sm, md, lg, xl, xxl                             | **marginBottom**      |
+| mx        | sm, md, lg, xl, xxl                             | **marginHorizontal**  |
+| my        | sm, md, lg, xl, xxl                             | **marginVertical**    |
+| --------  | -------------------                             | --------------------- |
+| flex      | row, column                                     | **flexDirection**     |
+| flex      | any number                                      | **flex: value**       |
+| alignself | center, flex-start, flex-end, stretch, baseline | **alignSelf**         |
 
 ### View specific
 
-| Property | Possible values                | Description                         |
-| -------- | ------------------------------ | ----------------------------------- |
-| elevated | _no value_                     | **Adds a drop shadow to your view** |
-| radius   | sm, md, lg, xl                 | **borderRadius**                    |
-| bg       | primary, secondary, background | **backgroundColor**                 |
+| Property       | Possible values                                 | Description                         |
+| -------------- | ----------------------------------------------- | ----------------------------------- |
+| elevated       | _no value_                                      | **Adds a drop shadow to your view** |
+| radius         | sm, md, lg, xl                                  | **borderRadius**                    |
+| bg             | primary, secondary, background                  | **backgroundColor**                 |
+| alignitems     | center, flex-start, flex-end, stretch, baseline | **alignItems**                      |
+| justifycontent | center, flex-start, flex-end, stretch, baseline | **justifyContent**                  |
 
 ### Text specific
 
-| Property | Possible values           | Description    |
-| -------- | ------------------------- | -------------- |
-| weight   | bold, normal, light       | **fontWeight** |
-| align    | center, left, right       | **textAlign**  |
-| color    | primary, secondary, white | **color**      |
-| size     | sm, md, lg, xl, xxl       | **fontSize**   |
+| Property | Possible values                | Description    |
+| -------- | ------------------------------ | -------------- |
+| weight   | light, normal, bold, extrabold | **fontWeight** |
+| align    | center, left, right            | **textAlign**  |
+| color    | primary, secondary, white      | **color**      |
+| size     | sm, md, lg, xl, xxl            | **fontSize**   |
 
 Each value of each property is mapped to a specific section of the theme.
 
@@ -207,6 +222,94 @@ Sometimes, the classes available are not sufficient for your specific need. In o
 
 ```js
 <View className="m-xl" style={{ opacity: 0.5 }} />
+```
+
+## Creating your own Picasso component
+
+If you want to add all the Picasso utility classes to any component, you can do so by using the `createPicassoComponent` HOC. Simply wrap your component inside the HOC and start using the className prop.
+
+```js
+import React from 'react'
+import { Image } from 'react-native'
+import { createPicassoComponent } from 'react-native-picasso'
+
+const PicassoImage = createPicassoComponent(Image)
+
+const App = () => {
+  return (
+    <>
+      <PicassoImage className="m-lg radius-md" style={{ height: 100, width: 100 }} source={{require('./path/to/image')}} />
+    </>
+  )
+}
+
+export default App
+```
+
+## Adding your own classes
+
+You can add your own values to use as classes. For example if you wanted to add a complex style for a card. You just need to add a new property at the root of your custom theme. And then you can simply use the class anywhere in your app on a Picasso component.
+
+```js
+import React from 'react'
+import { ThemeProvider, View, Text } from 'react-native-picasso'
+
+const theme = {
+  card: {
+    backgroundColor: '#dedede',
+    shadowColor: '#000000',
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 5,
+    alignItems: 'center',
+    justifyContenr: 'center',
+    borderRadius: 20,
+  },
+}
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <View className="card">
+        <Text>Hello from card</Text>
+      </View>
+    </ThemeProvider>
+  )
+}
+
+export default App
+```
+
+You can also add custom values to existing properties and all the properties which are using this specific set of values will have access to it. For example :
+
+```js
+import React from 'react'
+import { ThemeProvider, View, Text } from 'react-native-picasso'
+
+const theme = {
+  colors: {
+    mycolor: '#00B386',
+  },
+  textColors: {
+    supercolor: '#452eff',
+  },
+  radius: {
+    insane: 100,
+  },
+}
+
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <View className="bg-mycolor radius-insane">
+        <Text className="color-supercolor">Hello from custom color</Text>
+      </View>
+    </ThemeProvider>
+  )
+}
+
+export default App
 ```
 
 ## TODO

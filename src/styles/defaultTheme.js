@@ -11,9 +11,6 @@ export const defaultTheme = {
   },
   font: {
     family: 'Helvetica',
-    // regular: 'SFProText-Regular',
-    // semibold: 'SFProText-Semibold',
-    // bold: 'SFProText-Bold',
     sizes: {
       sm: 12,
       md: 16,
@@ -22,9 +19,10 @@ export const defaultTheme = {
       xxl: 40,
     },
     weights: {
-      bold: 'bold',
-      normal: 'normal',
       light: '100',
+      normal: 'normal',
+      bold: 'bold',
+      extrabold: '800',
     },
   },
   elevated: {

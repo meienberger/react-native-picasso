@@ -1,4 +1,19 @@
-export const spacingProperties = ['m', 'p']
+export const spacingProperties = [
+  'm',
+  'mr',
+  'ml',
+  'mt',
+  'mb',
+  'mx',
+  'my',
+  'p',
+  'pr',
+  'pl',
+  'pt',
+  'pb',
+  'px',
+  'py',
+]
 
 export const alignValues = {
   center: 'center',
@@ -19,28 +34,11 @@ export const flexValues = {
   column: 'column',
 }
 
-export const validPropertiesBase = [
-  'm',
-  'mr',
-  'ml',
-  'mt',
-  'mb',
-  'mx',
-  'my',
-  'p',
-  'pr',
-  'pl',
-  'pt',
-  'pb',
-  'px',
-  'py',
-  'flex',
-]
+export const validPropertiesBase = [...spacingProperties, 'flex', 'alignself']
 const validPropertiesView = [
   'elevated',
   'radius',
   'bg',
-  'alignself',
   'alignitems',
   'justifycontent',
 ]
@@ -49,4 +47,5 @@ const validPropertiesText = ['weight', 'align', 'color', 'size']
 export const validPropertiesForType = {
   view: validPropertiesView,
   text: validPropertiesText,
+  custom: [...validPropertiesView, ...validPropertiesText],
 }
