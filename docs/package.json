@@ -8,7 +8,8 @@
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
-    "serve": "docusaurus serve"
+    "serve": "docusaurus serve",
+    "pages:deploy": "GIT_USER=meienberger USE_SSH=true yarn deploy"
   },
   "dependencies": {
     "@docusaurus/core": "2.0.0-alpha.63",
