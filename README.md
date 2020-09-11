@@ -2,9 +2,13 @@
 
 This is **NOT** yet another components library !
 
-<div style="text-align:center">
-<img src="demo/logo.svg" alt="drawing" width="200" style="margin-top: 50px; margin-bottom: 50px;" />
-</div>
+<br />
+<br />
+<p align="center">
+  <img width="300" height="300" src="demo/logo.svg">
+</p>
+<br />
+<br />
 
 [![npm](https://img.shields.io/npm/dm/react-native-picasso.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-picasso)
 [![npm](https://img.shields.io/npm/l/react-native-picasso.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-picasso)
