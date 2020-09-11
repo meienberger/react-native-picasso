@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{59:function(a){a.exports=JSON.parse('{"allTagsPath":"/react-native-picasso/blog/tags","slug":"hello","name":"hello","count":2,"permalink":"/react-native-picasso/blog/tags/hello"}')}}]);
