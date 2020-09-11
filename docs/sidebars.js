@@ -5,6 +5,7 @@ module.exports = {
       'getting-started',
       'customization',
       'custom-components',
+      'examples',
     ],
     // Showcases: ['mdx'],
   },

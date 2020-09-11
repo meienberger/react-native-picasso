@@ -117,41 +117,51 @@ If we take the previous example, margin and padding are using the "spacing" valu
 
 Here is a table of all the possible properties and values you can use inside a className.
 
-### Base (Available for all components)
+## Base (Available for all components)
 
-| Property  | Possible values                                 | Description           |
-| --------- | ----------------------------------------------- | --------------------- |
-| p         | sm, md, lg, xl, xxl                             | **padding**           |
-| pl        | sm, md, lg, xl, xxl                             | **paddingLeft**       |
-| pr        | sm, md, lg, xl, xxl                             | **paddingRight**      |
-| pt        | sm, md, lg, xl, xxl                             | **paddingTop**        |
-| pb        | sm, md, lg, xl, xxl                             | **paddingBottom**     |
-| px        | sm, md, lg, xl, xxl                             | **paddingHorizontal** |
-| py        | sm, md, lg, xl, xxl                             | **paddingVertical**   |
-| --------  | -------------------                             | --------------------- |
-| m         | sm, md, lg, xl, xxl                             | **margin**            |
-| ml        | sm, md, lg, xl, xxl                             | **marginLeft**        |
-| mr        | sm, md, lg, xl, xxl                             | **marginRight**       |
-| mt        | sm, md, lg, xl, xxl                             | **marginTop**         |
-| mb        | sm, md, lg, xl, xxl                             | **marginBottom**      |
-| mx        | sm, md, lg, xl, xxl                             | **marginHorizontal**  |
-| my        | sm, md, lg, xl, xxl                             | **marginVertical**    |
-| --------  | -------------------                             | --------------------- |
-| flex      | row, column                                     | **flexDirection**     |
-| flex      | any number                                      | **flex: value**       |
-| alignself | center, flex-start, flex-end, stretch, baseline | **alignSelf**         |
+| Property  | Possible values                       | Description           |
+| --------- | ------------------------------------- | --------------------- |
+| p         | sm, md, lg, xl, xxl                   | **padding**           |
+| pl        | sm, md, lg, xl, xxl                   | **paddingLeft**       |
+| pr        | sm, md, lg, xl, xxl                   | **paddingRight**      |
+| pt        | sm, md, lg, xl, xxl                   | **paddingTop**        |
+| pb        | sm, md, lg, xl, xxl                   | **paddingBottom**     |
+| px        | sm, md, lg, xl, xxl                   | **paddingHorizontal** |
+| py        | sm, md, lg, xl, xxl                   | **paddingVertical**   |
+| --------  | -------------------                   | --------------------- |
+| m         | sm, md, lg, xl, xxl                   | **margin**            |
+| ml        | sm, md, lg, xl, xxl                   | **marginLeft**        |
+| mr        | sm, md, lg, xl, xxl                   | **marginRight**       |
+| mt        | sm, md, lg, xl, xxl                   | **marginTop**         |
+| mb        | sm, md, lg, xl, xxl                   | **marginBottom**      |
+| mx        | sm, md, lg, xl, xxl                   | **marginHorizontal**  |
+| my        | sm, md, lg, xl, xxl                   | **marginVertical**    |
+| --------  | -------------------                   | --------------------- |
+| flex      | row, column                           | **flexDirection**     |
+| flex      | _any number_                          | **flex: value**       |
+| alignself | center, start, end, stretch, baseline | **alignSelf**         |
 
-### View specific
+## View specific
 
-| Property       | Possible values                                 | Description                         |
-| -------------- | ----------------------------------------------- | ----------------------------------- |
-| elevated       | _no value_                                      | **Adds a drop shadow to your view** |
-| radius         | sm, md, lg, xl, round                           | **borderRadius**                    |
-| bg             | primary, secondary, background                  | **backgroundColor**                 |
-| alignitems     | center, flex-start, flex-end, stretch, baseline | **alignItems**                      |
-| justifycontent | center, flex-start, flex-end, stretch, baseline | **justifyContent**                  |
+| Property       | Possible values                             | Description                         |
+| -------------- | ------------------------------------------- | ----------------------------------- |
+| elevated       | _no value_                                  | **Adds a drop shadow to your view** |
+| radius         | sm, md, lg, xl                              | **borderRadius**                    |
+| radiustl       | sm, md, lg, xl                              | **borderTopLeftRadius**             |
+| radiustr       | sm, md, lg, xl                              | **borderTopRightRadius**            |
+| radiusbl       | sm, md, lg, xl                              | **borderBottomLeftRadius**          |
+| radiusbr       | sm, md, lg, xl                              | **borderBottomRightRadius**         |
+| bg             | primary, secondary, background              | **backgroundColor**                 |
+| justifycontent | center, start, end, around, between, evenly | **justifyContent**                  |
+| alignitems     | center, start, end, stretch, baseline       | **alignItems**                      |
+| bordercolor    | primary, secondary, background, border      | **borderColor**                     |
+| b              | _any number_                                | **borderWidth**                     |
+| br             | _any number_                                | **borderRightWidth**                |
+| bl             | _any number_                                | **borderLeftWidth**                 |
+| bt             | _any number_                                | **borderTopWidth**                  |
+| bb             | _any number_                                | **borderBottomWidth**               |
 
-### Text specific
+## Text specific
 
 | Property | Possible values                | Description    |
 | -------- | ------------------------------ | -------------- |

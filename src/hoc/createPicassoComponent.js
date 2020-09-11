@@ -10,7 +10,12 @@ export default function createPicassoComponent(WrappedComponent) {
       const { className = '', theme, style, ...other } = this.props
       const picassoStyle = buildStyleSheet(className, 'custom', theme)
 
-      return <WrappedComponent style={[picassoStyle, style]} {...other} />
+      return (
+        <WrappedComponent
+          style={[{ borderColor: theme.colors?.border }, picassoStyle, style]}
+          {...other}
+        />
+      )
     }
   }
 

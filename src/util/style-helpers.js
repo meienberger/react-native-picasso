@@ -7,10 +7,27 @@ import {
   spacingProperties,
   alignItemsValues,
   PROPERTIES,
+  borderWidthProperties,
 } from './constants'
 
+const getSide = (value) => {
+  let side = ''
+
+  if (value === 't') side = 'Top'
+  else if (value === 'b') side = 'Bottom'
+  else if (value === 'l') side = 'Left'
+  else if (value === 'r') side = 'Right'
+  else if (value === 'x') side = 'Horizontal'
+  else if (value === 'y') side = 'Vertical'
+
+  return side
+}
+
 const classesToStyle = (array, theme) => {
-  let styles = {}
+  let styles = {
+    // borderWidth: 0,
+    // borderColor: theme.colors.borderColor,
+  }
 
   array.forEach(({ property, value }) => {
     switch (property.toLowerCase()) {
@@ -48,23 +65,37 @@ const classesToStyle = (array, theme) => {
       case PROPERTIES.BORDER_RADIUS:
         styles.borderRadius = theme.radius?.[value]
         break
+      case PROPERTIES.BORDER_RADIUS_BOTTOM_LEFT:
+        styles.borderBottomLeftRadius = theme.radius?.[value]
+        break
+      case PROPERTIES.BORDER_RADIUS_BOTTOM_RIGHT:
+        styles.borderBottomRightRadius = theme.radius?.[value]
+        break
+      case PROPERTIES.BORDER_RADIUS_TOP_LEFT:
+        styles.borderTopLeftRadius = theme.radius?.[value]
+        break
+      case PROPERTIES.BORDER_RADIUS_TOP_RIGHT:
+        styles.borderTopRightRadius = theme.radius?.[value]
+        break
+      case PROPERTIES.BORDER_COLOR:
+        styles.borderColor = theme.colors?.[value]
+        break
       default:
         if (spacingProperties.includes(property.toLowerCase())) {
           const values = theme.spacing
           let main = ''
-          let side = ''
+          const side = getSide(property[1])
 
           if (property[0] === 'm') main = 'margin'
           else if (property[0] === 'p') main = 'padding'
 
-          if (property[1] === 't') side = 'Top'
-          else if (property[1] === 'b') side = 'Bottom'
-          else if (property[1] === 'l') side = 'Left'
-          else if (property[1] === 'r') side = 'Right'
-          else if (property[1] === 'x') side = 'Horizontal'
-          else if (property[1] === 'y') side = 'Vertical'
-
           styles[`${main}${side}`] = values[value]
+        } else if (borderWidthProperties.includes(property.toLowerCase())) {
+          const side = getSide(property[1])
+
+          if (!Number.isNaN(Number(value))) {
+            styles[`border${side}Width`] = Number(value)
+          }
         }
         // Custom root values like elevated
         else {

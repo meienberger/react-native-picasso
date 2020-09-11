@@ -15,6 +15,8 @@ export const spacingProperties = [
   'py',
 ]
 
+export const borderWidthProperties = ['b', 'bl', 'br', 'bt', 'bb']
+
 export const alignValues = {
   center: 'center',
   left: 'left',
@@ -24,10 +26,13 @@ export const alignValues = {
 
 export const alignItemsValues = {
   center: 'center',
-  'flex-start': 'flex-start',
-  'flex-end': 'flex-end',
+  start: 'flex-start',
+  end: 'flex-end',
   stretch: 'stretch',
   baseline: 'baseline',
+  between: 'space-between',
+  around: 'space-around',
+  evenly: 'space-evenly',
 }
 
 export const flexValues = {
@@ -39,9 +44,15 @@ export const validPropertiesBase = [...spacingProperties, 'flex', 'alignself']
 const validPropertiesView = [
   'elevated',
   'radius',
+  'radiustl',
+  'radiustr',
+  'radiusbl',
+  'radiusbr',
   'bg',
   'alignitems',
   'justifycontent',
+  'bordercolor',
+  ...borderWidthProperties,
 ]
 const validPropertiesText = ['weight', 'align', 'color', 'size']
 
@@ -62,4 +73,9 @@ export const PROPERTIES = {
   TEXT_ALIGN: 'align',
   FLEX: 'flex',
   BORDER_RADIUS: 'radius',
+  BORDER_RADIUS_TOP_LEFT: 'radiustl',
+  BORDER_RADIUS_TOP_RIGHT: 'radiustr',
+  BORDER_RADIUS_BOTTOM_LEFT: 'radiusbl',
+  BORDER_RADIUS_BOTTOM_RIGHT: 'radiusbr',
+  BORDER_COLOR: 'bordercolor',
 }

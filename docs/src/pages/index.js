@@ -8,15 +8,8 @@ import styles from './styles.module.css'
 
 const features = [
   {
-    title: 'Easy to Use',
-    imageUrl: 'img/undraw_docusaurus_mountain.svg',
-    description: (
-      <>Just one install command, JavaScript only, no dependencies !</>
-    ),
-  },
-  {
     title: 'Focus on What Matters',
-    imageUrl: 'img/undraw_docusaurus_tree.svg',
+    // imageUrl: 'img/undraw_docusaurus_tree.svg',
     description: (
       <>
         Picasso lets you focus on your business logic, you define your design
@@ -25,8 +18,16 @@ const features = [
     ),
   },
   {
+    title: 'Easy to Use',
+    // imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    description: (
+      <>Just one install command, JavaScript only, no dependencies !</>
+    ),
+  },
+
+  {
     title: 'Fully compatible and flexible',
-    imageUrl: 'img/undraw_docusaurus_react.svg',
+    // imageUrl: 'img/undraw_docusaurus_react.svg',
     description: (
       <>
         Picasso is highly pluggable. You can start by using the tools at some

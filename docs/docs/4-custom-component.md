@@ -24,3 +24,5 @@ const App = () => {
 
 export default App
 ```
+
+Be aware that the component you are passing to `createPicassoComponent` should accept a `style` property initially.

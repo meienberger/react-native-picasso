@@ -7,7 +7,13 @@ import { withTheme } from '../core/theming'
 const PicassoSafeView = ({ children, className = '', style, theme }) => {
   const picassoStyle = buildStyleSheet(className, 'view', theme)
 
-  return <SafeAreaView style={[picassoStyle, style]}>{children}</SafeAreaView>
+  return (
+    <SafeAreaView
+      style={[{ borderColor: theme.colors?.border }, picassoStyle, style]}
+    >
+      {children}
+    </SafeAreaView>
+  )
 }
 
 PicassoSafeView.propTypes = {

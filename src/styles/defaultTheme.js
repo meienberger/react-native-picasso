@@ -3,6 +3,7 @@ export const defaultTheme = {
     background: '#eeeeee',
     primary: '#00B386',
     secondary: '#dedede',
+    border: '#d3d3d3',
   },
   textColors: {
     primary: '#333333',

@@ -7,7 +7,11 @@ import { withTheme } from '../core/theming'
 const PicassoView = ({ children, className = '', style, theme }) => {
   const picassoStyle = buildStyleSheet(className, 'view', theme)
 
-  return <View style={[picassoStyle, style]}>{children}</View>
+  return (
+    <View style={[{ borderColor: theme.colors?.border }, picassoStyle, style]}>
+      {children}
+    </View>
+  )
 }
 
 PicassoView.propTypes = {
