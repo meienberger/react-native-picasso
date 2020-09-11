@@ -37,6 +37,7 @@ export const defaultTheme = {
     md: 10,
     lg: 20,
     xl: 40,
+    round: 1000,
   },
   spacing: {
     sm: 8,

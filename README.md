@@ -1,6 +1,10 @@
-# react-native-picasso 👨🏻‍🎨
+# react-native-picasso
 
 This is **NOT** yet another components library !
+
+<div style="text-align:center">
+<img src="demo/logo.svg" alt="drawing" width="200" style="margin-top: 50px; margin-bottom: 50px;" />
+</div>
 
 [![npm](https://img.shields.io/npm/dm/react-native-picasso.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-picasso)
 [![npm](https://img.shields.io/npm/l/react-native-picasso.svg?style=for-the-badge)](https://www.npmjs.com/package/react-native-picasso)
@@ -21,14 +25,18 @@ This was heavily inspired by Bootstrap
 ## Installation
 
 ```bash
-    yarn add react-native-picasso
+yarn add react-native-picasso
 ```
 
 or with npm
 
 ```bash
-    npm i --save react-native-picasso
+npm i --save react-native-picasso
 ```
+
+## Documentation
+
+Full documentation can be found here : [https://meienberger.github.io/react-native-picasso/](https://meienberger.github.io/react-native-picasso/)
 
 ## Usage
 
@@ -70,9 +78,10 @@ All the values are declared in a defaultTheme variable. Which is :
             xxl: 40,
         },
         weights: {
-            bold: 'bold',
-            normal: 'normal',
             light: '100',
+            normal: 'normal',
+            bold: 'bold',
+            extrabold: '900'
         },
     },
     elevated: {
@@ -87,6 +96,7 @@ All the values are declared in a defaultTheme variable. Which is :
         md: 10,
         lg: 20,
         xl: 40,
+        round: 1000,
     },
     spacing: {
         sm: 8,
@@ -148,7 +158,7 @@ Here is a table of all the possible properties and values you can use inside a c
 | Property | Possible values                | Description    |
 | -------- | ------------------------------ | -------------- |
 | weight   | light, normal, bold, extrabold | **fontWeight** |
-| align    | center, left, right            | **textAlign**  |
+| align    | center, left, right, justify   | **textAlign**  |
 | color    | primary, secondary, white      | **color**      |
 | size     | sm, md, lg, xl, xxl            | **fontSize**   |
 
@@ -311,6 +321,11 @@ const App = () => {
 
 export default App
 ```
+
+## Acknowledgements
+
+- [@callstack/react-theme-provider](@callstack/react-theme-provider) : For inspiration on how to create the ThemeProvider
+- [Bootstrap](https://getbootstrap.com/) : For the original idea
 
 ## TODO
 

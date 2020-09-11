@@ -5,10 +5,11 @@ import { validPropertiesBase, validPropertiesForType } from './constants'
  * valid picasso class types
  * @param {String} classname
  */
-export const splitAndValidate = (classname, componentType) => {
+export const splitAndValidate = (classname, componentType, theme) => {
   const validProperties = [
     ...validPropertiesBase,
     ...validPropertiesForType[componentType],
+    ...Object.keys(theme),
   ]
 
   const split = classname.split(' ')

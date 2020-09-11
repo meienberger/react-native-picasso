@@ -19,6 +19,7 @@ export const alignValues = {
   center: 'center',
   left: 'left',
   right: 'right',
+  justify: 'justify',
 }
 
 export const alignItemsValues = {
@@ -48,4 +49,17 @@ export const validPropertiesForType = {
   view: validPropertiesView,
   text: validPropertiesText,
   custom: [...validPropertiesView, ...validPropertiesText],
+}
+
+export const PROPERTIES = {
+  BACKGROUND: 'bg',
+  COLOR: 'color',
+  FONT_SIZE: 'size',
+  FONT_WEIGHT: 'weight',
+  ALIGN_ITEMS: 'alignitems',
+  JUSTIFY_CONTENT: 'justifycontent',
+  ALIGN_SELF: 'alignself',
+  TEXT_ALIGN: 'align',
+  FLEX: 'flex',
+  BORDER_RADIUS: 'radius',
 }
