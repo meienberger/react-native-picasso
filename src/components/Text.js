@@ -5,7 +5,7 @@ import { buildStyleSheet } from '../util/style-helpers'
 import { withTheme } from '../core/theming'
 
 const PicassoText = (props) => {
-  const { children, className = '', style, theme } = props
+  const { children, className = '', style, theme, ...others } = props
 
   const picassoStyle = buildStyleSheet(className, 'text', theme)
 
@@ -16,6 +16,7 @@ const PicassoText = (props) => {
         picassoStyle,
         style,
       ])}
+      {...others}
     >
       {children}
     </Text>

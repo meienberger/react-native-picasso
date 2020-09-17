@@ -1,6 +1,6 @@
 {
   "name": "react-native-picasso",
-  "version": "1.0.10",
+  "version": "1.0.13",
   "description": "",
   "main": "dist/index.js",
   "scripts": {

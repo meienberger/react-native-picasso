@@ -1,10 +1,10 @@
 import React from 'react'
-import { SafeAreaView } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import PropTypes from 'prop-types'
 import { buildStyleSheet } from '../util/style-helpers'
 import { withTheme } from '../core/theming'
 
-const PicassoSafeView = ({
+const PicassoTouchableOpacity = ({
   children,
   className = '',
   style,
@@ -14,20 +14,20 @@ const PicassoSafeView = ({
   const picassoStyle = buildStyleSheet(className, 'view', theme)
 
   return (
-    <SafeAreaView
+    <TouchableOpacity
       style={[{ borderColor: theme.colors?.border }, picassoStyle, style]}
       {...others}
     >
       {children}
-    </SafeAreaView>
+    </TouchableOpacity>
   )
 }
 
-PicassoSafeView.propTypes = {
+PicassoTouchableOpacity.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.object,
   theme: PropTypes.object.isRequired,
 }
 
-export default withTheme(PicassoSafeView)
+export default withTheme(PicassoTouchableOpacity)
