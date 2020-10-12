@@ -3,8 +3,16 @@ import { Text, StyleSheet } from 'react-native'
 import PropTypes from 'prop-types'
 import { buildStyleSheet } from '../util/style-helpers'
 import { withTheme } from '../core/theming'
+import { ThemeInterface } from '../styles/defaultTheme'
 
-const PicassoText = (props) => {
+interface Props {
+  className: string
+  children: any
+  style: Object
+  theme: ThemeInterface
+}
+
+const PicassoText = (props: Props) => {
   const { children, className = '', style, theme, ...others } = props
 
   const picassoStyle = buildStyleSheet(className, 'text', theme)

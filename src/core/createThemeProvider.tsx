@@ -1,8 +1,9 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import deepmerge from 'deepmerge'
+import { ThemeInterface } from '../styles/defaultTheme'
 
-function createThemeProvider(defaultTheme, ThemeContext) {
+function createThemeProvider(defaultTheme: ThemeInterface, ThemeContext) {
   class ThemeProvider extends React.Component {
     static defaultProps = {
       theme: defaultTheme,

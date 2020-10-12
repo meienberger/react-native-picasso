@@ -1,4 +1,47 @@
-export const defaultTheme = {
+interface Colors {
+  background: string
+  primary: string
+  secondary: string
+  border: string
+}
+
+interface TextColors {
+  primary: string
+  secondary: string
+  white: string
+}
+
+interface FontSizes {
+  sm: number
+  md: number
+  lg: number
+  xl: number
+  xxl: number
+}
+
+interface FontWeights {
+  light: string
+  normal: string
+  bold: string
+  extrabold: string
+}
+
+interface Font {
+  family: string
+  sizes: FontSizes
+  weights: FontWeights
+}
+
+export interface ThemeInterface {
+  colors: Colors
+  textColors: TextColors
+  font: Font
+  elevated: Object
+  radius: Object
+  spacing: Object
+}
+
+export const defaultTheme: ThemeInterface = {
   colors: {
     background: '#eeeeee',
     primary: '#00B386',

@@ -3,6 +3,14 @@ import { SafeAreaView } from 'react-native'
 import PropTypes from 'prop-types'
 import { buildStyleSheet } from '../util/style-helpers'
 import { withTheme } from '../core/theming'
+import { ThemeInterface } from '../styles/defaultTheme'
+
+interface Props {
+  className: string
+  children: any
+  style: Object
+  theme: ThemeInterface
+}
 
 const PicassoSafeView = ({
   children,
@@ -10,7 +18,7 @@ const PicassoSafeView = ({
   style,
   theme,
   ...others
-}) => {
+}: Props) => {
   const picassoStyle = buildStyleSheet(className, 'view', theme)
 
   return (
