@@ -41,6 +41,7 @@ const createWithTheme = (ThemeProvider, ThemeContext) =>
 
     ThemedComponent.propTypes = {
       _reactThemeProviderForwardedRef: PropTypes.any,
+      ...Comp.propTypes,
     }
 
     const ResultComponent = React.forwardRef((props, ref) => (
