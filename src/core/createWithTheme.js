@@ -3,13 +3,13 @@ import deepmerge from 'deepmerge'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import PropTypes from 'prop-types'
 
-const createWithTheme = (ThemeProvider, ThemeContext) =>
-  function withTheme(Comp) {
-    class ThemedComponent extends React.Component {
-      _previous
+const createWithTheme = (ThemeProvider, ThemeContext) => {
+  const withTheme = (WrappedComponent) => {
+    const Enhance = (props) => {
+      let _previous
 
-      _merge = (a, b) => {
-        const previous = this._previous
+      const _merge = (a, b) => {
+        const previous = _previous
 
         if (previous && previous.a === a && previous.b === b) {
           return previous.result
@@ -17,42 +17,48 @@ const createWithTheme = (ThemeProvider, ThemeContext) =>
 
         const result = a && b && a !== b ? deepmerge(a, b) : a || b
 
-        this._previous = { a, b, result }
+        _previous = { a, b, result }
 
         return result
       }
 
-      render() {
-        const { _reactThemeProviderForwardedRef, ...rest } = this.props
+      const { _reactThemeProviderForwardedRef, ...rest } = props
 
-        return (
-          <ThemeContext.Consumer>
-            {(theme) => (
-              <Comp
-                {...rest}
-                theme={this._merge(theme, rest.theme)}
-                ref={_reactThemeProviderForwardedRef}
-              />
-            )}
-          </ThemeContext.Consumer>
-        )
-      }
+      return (
+        <ThemeContext.Consumer>
+          {(theme) => (
+            <WrappedComponent
+              {...rest}
+              theme={_merge(theme, rest.theme)}
+              ref={_reactThemeProviderForwardedRef}
+            />
+          )}
+        </ThemeContext.Consumer>
+      )
     }
 
-    ThemedComponent.propTypes = {
+    Enhance.propTypes = {
       _reactThemeProviderForwardedRef: PropTypes.any,
-      ...Comp.propTypes,
+      ...WrappedComponent.propTypes,
     }
 
     const ResultComponent = React.forwardRef((props, ref) => (
-      <ThemedComponent {...props} _reactThemeProviderForwardedRef={ref} />
+      <Enhance {...props} _reactThemeProviderForwardedRef={ref} />
     ))
 
-    ResultComponent.displayName = `withTheme(${Comp.displayName || Comp.name})`
+    ResultComponent.displayName = `withTheme(${
+      WrappedComponent.displayName || WrappedComponent.name
+    })`
 
-    hoistNonReactStatics(ResultComponent, Comp)
+    const FinalComponent = hoistNonReactStatics(
+      ResultComponent,
+      WrappedComponent,
+    )
 
-    return ResultComponent
+    return FinalComponent
   }
+
+  return withTheme
+}
 
 export default createWithTheme

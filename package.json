@@ -1,6 +1,6 @@
 {
   "name": "react-native-picasso",
-  "version": "1.0.14",
+  "version": "1.0.22",
   "description": "",
   "main": "src/index.js",
   "scripts": {
@@ -45,7 +45,7 @@
     "react-native": "^0.63.2"
   },
   "files": [
-    "dist"
+    "src"
   ],
   "dependencies": {
     "deepmerge": "^4.2.2",

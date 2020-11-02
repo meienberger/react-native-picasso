@@ -1,16 +1,17 @@
 import React from 'react'
-import { Text, StyleSheet } from 'react-native'
+import { Text, StyleSheet, TextPropTypes } from 'react-native'
 import PropTypes from 'prop-types'
 import { buildStyleSheet } from '../util/style-helpers'
 import { withTheme } from '../core/theming'
 
-const PicassoText = (props) => {
+const PicassoText = React.forwardRef((props, ref) => {
   const { children, className = '', style, theme, ...others } = props
 
   const picassoStyle = buildStyleSheet(className, 'text', theme)
 
   return (
     <Text
+      ref={ref}
       style={StyleSheet.flatten([
         { fontFamily: theme.font?.family, color: theme?.textColors?.primary },
         picassoStyle,
@@ -21,13 +22,16 @@ const PicassoText = (props) => {
       {children}
     </Text>
   )
-}
+})
 
-PicassoText.propTypes = {
+const propTypes = {
   children: PropTypes.any,
   className: PropTypes.string,
-  style: PropTypes.object,
   theme: PropTypes.object.isRequired,
+  ...TextPropTypes,
 }
+
+PicassoText.displayName = 'PicassoText'
+PicassoText.propTypes = propTypes
 
 export default withTheme(PicassoText)
