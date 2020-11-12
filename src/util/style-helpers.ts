@@ -1,5 +1,6 @@
 /* eslint-disable newline-after-var */
-import { StyleSheet } from 'react-native'
+import { StyleSheet, TextStyle } from 'react-native'
+import { Theme } from '../styles/defaultTheme'
 import { splitAndValidate } from './classname-helpers'
 import {
   alignValues,
@@ -10,7 +11,12 @@ import {
   borderWidthProperties,
 } from './constants'
 
-const getSide = (value) => {
+interface PropertyValue {
+  property: string
+  value: string
+}
+
+const getSide = (value: string) => {
   let side = ''
 
   if (value === 't') side = 'Top'
@@ -23,16 +29,13 @@ const getSide = (value) => {
   return side
 }
 
-const classesToStyle = (array, theme) => {
-  let styles = {
-    // borderWidth: 0,
-    // borderColor: theme.colors.borderColor,
-  }
+const classesToStyle = (array: PropertyValue[], theme: Record<string, any>) => {
+  let styles: Record<string, any> = {}
 
   array.forEach(({ property, value }) => {
     switch (property.toLowerCase()) {
       case PROPERTIES.BACKGROUND:
-        styles.backgroundColor = theme.colors?.[value]
+        styles.backgroundColor = theme.colors[value]
         break
       case PROPERTIES.COLOR:
         styles.color = theme.textColors[value]
@@ -91,7 +94,8 @@ const classesToStyle = (array, theme) => {
 
           styles[`${main}${side}`] = values[value]
         } else if (borderWidthProperties.includes(property.toLowerCase())) {
-          const side = getSide(property[1])
+          const prop: string = property[1]
+          const side = getSide(prop)
 
           if (!Number.isNaN(Number(value))) {
             styles[`border${side}Width`] = Number(value)
@@ -110,7 +114,11 @@ const classesToStyle = (array, theme) => {
   return styles
 }
 
-export const buildStyleSheet = (className, componentType = 'custom', theme) => {
+export const buildStyleSheet = (
+  className: string,
+  componentType: 'custom' | 'view' | 'text' = 'custom',
+  theme: Theme,
+) => {
   const arrayClasses = splitAndValidate(className, componentType, theme)
   const styles = StyleSheet.flatten(classesToStyle(arrayClasses, theme))
 

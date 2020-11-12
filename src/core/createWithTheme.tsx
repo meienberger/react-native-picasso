@@ -2,13 +2,19 @@ import * as React from 'react'
 import deepmerge from 'deepmerge'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import PropTypes from 'prop-types'
+import { Theme } from '../styles/defaultTheme'
 
-const createWithTheme = (ThemeProvider, ThemeContext) => {
-  const withTheme = (WrappedComponent) => {
-    const Enhance = (props) => {
-      let _previous
+interface CProps {
+  className: string
+  theme: Theme
+}
 
-      const _merge = (a, b) => {
+const createWithTheme = (ThemeContext: React.Context<Theme>) => {
+  const withTheme = (WrappedComponent: React.FC<CProps>) => {
+    const Enhance = (props: any) => {
+      let _previous: any
+
+      const _merge = (a: object, b: object) => {
         const previous = _previous
 
         if (previous && previous.a === a && previous.b === b) {
@@ -26,7 +32,7 @@ const createWithTheme = (ThemeProvider, ThemeContext) => {
 
       return (
         <ThemeContext.Consumer>
-          {(theme) => (
+          {(theme: Theme) => (
             <WrappedComponent
               {...rest}
               theme={_merge(theme, rest.theme)}

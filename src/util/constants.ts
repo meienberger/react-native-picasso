@@ -17,14 +17,14 @@ export const spacingProperties = [
 
 export const borderWidthProperties = ['b', 'bl', 'br', 'bt', 'bb']
 
-export const alignValues = {
+export const alignValues: Record<string, string> = {
   center: 'center',
   left: 'left',
   right: 'right',
   justify: 'justify',
 }
 
-export const alignItemsValues = {
+export const alignItemsValues: Record<string, string> = {
   center: 'center',
   start: 'flex-start',
   end: 'flex-end',
@@ -35,7 +35,7 @@ export const alignItemsValues = {
   evenly: 'space-evenly',
 }
 
-export const flexValues = {
+export const flexValues: Record<string, string> = {
   row: 'row',
   column: 'column',
 }
