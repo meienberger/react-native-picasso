@@ -1,12 +1,22 @@
+import { Theme } from '../styles/defaultTheme'
 import { validPropertiesBase, validPropertiesForType } from './constants'
+
+export interface PropertyValue {
+  property: string
+  value: string
+}
 
 /**
  * Splits the classname and return an array of
  * valid picasso class types
  * @param {String} classname
  */
-export const splitAndValidate = (classname, componentType, theme) => {
-  const validProperties = [
+export const splitAndValidate = (
+  classname: string,
+  componentType: 'view' | 'text' | 'custom',
+  theme: Theme,
+): PropertyValue[] => {
+  const validProperties: string[] = [
     ...validPropertiesBase,
     ...validPropertiesForType[componentType],
     ...Object.keys(theme),
@@ -19,10 +29,11 @@ export const splitAndValidate = (classname, componentType, theme) => {
       const [property, value] = declaration.split('-')
 
       if (validProperties.includes(property)) {
-        return { property, value }
+        const final: PropertyValue = { property, value }
+        return final
       }
 
-      return null
+      return { property: '', value: '' }
     })
     .filter(Boolean)
 

@@ -1,4 +1,52 @@
-export const defaultTheme = {
+interface BackgroundColors {
+  background: string
+  primary: string
+  secondary: string
+  border: string
+}
+
+interface TextColors {
+  primary: string
+  secondary: string
+  white: string
+}
+
+interface Sizes {
+  sm: number
+  md: number
+  lg: number
+  xl: number
+  xxl: number
+}
+
+interface Weights {
+  light: string
+  normal: string
+  bold: string
+  extrabold: string
+}
+
+interface Font {
+  family: string
+  sizes: Sizes
+  weights: Weights
+}
+
+interface Radius extends Sizes {
+  round: number
+}
+
+export interface Theme {
+  colors: BackgroundColors
+  textColors: TextColors
+  font: Font
+  elevated: {}
+  radius: Radius
+  spacing: Sizes
+  // [key: string]: object
+}
+
+export const defaultTheme: Theme = {
   colors: {
     background: '#eeeeee',
     primary: '#00B386',
@@ -38,6 +86,7 @@ export const defaultTheme = {
     md: 10,
     lg: 20,
     xl: 40,
+    xxl: 80,
     round: 1000,
   },
   spacing: {
