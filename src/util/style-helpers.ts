@@ -1,5 +1,5 @@
 /* eslint-disable newline-after-var */
-import { StyleSheet, TextStyle } from 'react-native'
+import { StyleSheet } from 'react-native'
 import { Theme } from '../styles/defaultTheme'
 import { splitAndValidate } from './classname-helpers'
 import {

@@ -1,6 +1,5 @@
 /* eslint-disable react/display-name */
-import React from 'react'
-import PropTypes from 'prop-types'
+import * as React from 'react'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import { withTheme } from '../core/theming'
 import { buildStyleSheet } from '../util/style-helpers'

@@ -1,8 +1,6 @@
 import * as React from 'react'
-import PropTypes from 'prop-types'
 import deepmerge from 'deepmerge'
 import { Theme } from '../styles/defaultTheme'
-import { TextProps, ViewProps } from 'react-native'
 
 interface Props {
   theme: Theme

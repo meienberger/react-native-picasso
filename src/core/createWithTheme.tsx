@@ -1,20 +1,21 @@
 import * as React from 'react'
 import deepmerge from 'deepmerge'
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import PropTypes from 'prop-types'
 import { Theme } from '../styles/defaultTheme'
+import { TextProps, TouchableOpacityProps, ViewProps } from 'react-native'
 
-interface CProps {
-  className: string
+interface CProps extends TouchableOpacityProps {
+  className?: string
   theme: Theme
+  ref: React.ForwardedRef<any>
 }
 
 const createWithTheme = (ThemeContext: React.Context<Theme>) => {
-  const withTheme = (WrappedComponent: React.FC<CProps>) => {
-    const Enhance = (props: any) => {
+  const withTheme = (WrappedComponent: React.FC<any>) => {
+    const Enhance: React.FC<CProps> = (props) => {
       let _previous: any
 
-      const _merge = (a: object, b: object) => {
+      const _merge = (a: object, b: Theme) => {
         const previous = _previous
 
         if (previous && previous.a === a && previous.b === b) {
@@ -28,7 +29,7 @@ const createWithTheme = (ThemeContext: React.Context<Theme>) => {
         return result
       }
 
-      const { _reactThemeProviderForwardedRef, ...rest } = props
+      const { ref, ...rest } = props
 
       return (
         <ThemeContext.Consumer>
@@ -36,21 +37,18 @@ const createWithTheme = (ThemeContext: React.Context<Theme>) => {
             <WrappedComponent
               {...rest}
               theme={_merge(theme, rest.theme)}
-              ref={_reactThemeProviderForwardedRef}
+              ref={ref}
             />
           )}
         </ThemeContext.Consumer>
       )
     }
 
-    Enhance.propTypes = {
-      _reactThemeProviderForwardedRef: PropTypes.any,
-      ...WrappedComponent.propTypes,
-    }
-
-    const ResultComponent = React.forwardRef((props, ref) => (
-      <Enhance {...props} _reactThemeProviderForwardedRef={ref} />
-    ))
+    const ResultComponent = React.forwardRef(
+      (props: CProps, ref: React.ForwardedRef<any>) => (
+        <Enhance {...props} theme={props.theme} ref={ref} />
+      ),
+    )
 
     ResultComponent.displayName = `withTheme(${
       WrappedComponent.displayName || WrappedComponent.name

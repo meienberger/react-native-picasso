@@ -1,31 +1,41 @@
-import React from 'react'
+import * as React from 'react'
 import { SafeAreaView, ViewProps } from 'react-native'
 import { buildStyleSheet } from '../util/style-helpers'
-import { withTheme } from '../core/theming'
+import { ThemeContext, withTheme } from '../core/theming'
 import { Theme } from '../styles/defaultTheme'
 
 interface CProps extends ViewProps {
-  className: string
-  theme: Theme
+  className?: string
 }
 
 const PicassoSafeView: React.FC<CProps> = React.forwardRef(
   (props, ref: React.ForwardedRef<SafeAreaView>) => {
-    const { children, className = '', style, theme, ...others } = props
-    const picassoStyle = buildStyleSheet(className, 'view', theme)
+    const { children, className = '', style, ...others } = props
 
     return (
-      <SafeAreaView
-        ref={ref}
-        style={[{ borderColor: theme.colors?.border }, picassoStyle, style]}
-        {...others}
-      >
-        {children}
-      </SafeAreaView>
+      <ThemeContext.Consumer>
+        {(theme: Theme) => {
+          const picassoStyle = buildStyleSheet(className, 'view', theme)
+
+          return (
+            <SafeAreaView
+              ref={ref}
+              style={[
+                { borderColor: theme.colors?.border },
+                picassoStyle,
+                style,
+              ]}
+              {...others}
+            >
+              {children}
+            </SafeAreaView>
+          )
+        }}
+      </ThemeContext.Consumer>
     )
   },
 )
 
 PicassoSafeView.displayName = 'PicassoSafeView'
 
-export default withTheme(PicassoSafeView)
+export default PicassoSafeView
