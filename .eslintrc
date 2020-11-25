@@ -2,9 +2,18 @@
   "extends": [
     "airbnb-base",
     "plugin:prettier/recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "useJSXTextNode": true,
+    "project": "./tsconfig.json",
+    "tsconfigRootDir": "."
+  },
   "env": {
     "react-native/react-native": true
   },
@@ -88,5 +97,11 @@
     "react/require-default-props": 0,
     "no-loops/no-loops": 0
   },
-  "plugins": ["react-native", "prettier", "no-loops", "react-hooks"]
+  "plugins": [
+    "react-native",
+    "prettier",
+    "no-loops",
+    "react-hooks",
+    "plugin:@typescript-eslint/recommended"
+  ]
 }

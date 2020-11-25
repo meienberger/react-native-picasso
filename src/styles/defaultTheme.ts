@@ -1,49 +1,54 @@
 interface BackgroundColors {
-  background: string
-  primary: string
-  secondary: string
-  border: string
+  background?: string
+  primary?: string
+  secondary?: string
+  border?: string
+  [x: string]: any
 }
 
 interface TextColors {
-  primary: string
-  secondary: string
-  white: string
+  primary?: string
+  secondary?: string
+  white?: string
+  [x: string]: any
 }
 
 interface Sizes {
-  sm: number
-  md: number
-  lg: number
-  xl: number
-  xxl: number
+  sm?: number
+  md?: number
+  lg?: number
+  xl?: number
+  xxl?: number
+  [x: string]: any
 }
 
 interface Weights {
-  light: string
-  normal: string
-  bold: string
-  extrabold: string
+  light?: string
+  normal?: string
+  bold?: string
+  extrabold?: string
+  [x: string]: any
 }
 
 interface Font {
-  family: string
-  sizes: Sizes
-  weights: Weights
+  family?: string
+  sizes?: Sizes
+  weights?: Weights
 }
 
 interface Radius extends Sizes {
-  round: number
+  round?: number
+  [x: string]: any
 }
 
 export interface Theme {
-  colors: BackgroundColors
-  textColors: TextColors
-  font: Font
-  elevated: {}
-  radius: Radius
-  spacing: Sizes
-  // [key: string]: object
+  colors?: BackgroundColors
+  textColors?: TextColors
+  font?: Font
+  elevated?: object
+  radius?: Radius
+  spacing?: Sizes
+  [x: string]: any
 }
 
 export const defaultTheme: Theme = {
