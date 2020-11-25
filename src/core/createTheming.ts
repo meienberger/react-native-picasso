@@ -4,7 +4,16 @@ import createThemeProvider from './createThemeProvider'
 import createWithTheme from './createWithTheme'
 import { Theme } from '../styles/defaultTheme'
 
-export default function createTheming(defaultTheme: Theme): any {
+export default function createTheming(
+  defaultTheme: Theme,
+): {
+  ThemeContext: React.Context<Theme>
+  ThemeProvider: React.FC<{
+    theme: Theme
+  }>
+  withTheme: (Comp: React.FC<any>) => any
+  useTheme: (overrides: Theme) => Theme
+} {
   const ThemeContext = React.createContext(defaultTheme)
 
   const ThemeProvider = createThemeProvider(defaultTheme, ThemeContext)

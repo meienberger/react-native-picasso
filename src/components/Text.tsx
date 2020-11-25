@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Text, StyleSheet, TextProps } from 'react-native'
 import { buildStyleSheet } from '../util/style-helpers'
-import { ThemeContext, withTheme } from '../core/theming'
+import { ThemeContext } from '../core/theming'
 import { Theme } from '../styles/defaultTheme'
 
 interface CProps extends TextProps {

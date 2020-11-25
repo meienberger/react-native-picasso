@@ -1,8 +1,9 @@
 {
   "name": "react-native-picasso",
-  "version": "1.0.28",
+  "version": "1.0.30",
   "description": "",
   "main": "build/index.js",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run:linter": "eslint 'src/**/*.js'",
@@ -27,6 +28,8 @@
     "@types/prop-types": "^15.7.3",
     "@types/react": "^16.9.56",
     "@types/react-native": "^0.63.34",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.8.1",
     "eslint-config-airbnb": "^18.2.0",

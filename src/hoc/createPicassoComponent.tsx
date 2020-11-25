@@ -1,28 +1,41 @@
 /* eslint-disable react/display-name */
 import * as React from 'react'
+import { StyleSheet } from 'react-native'
 import hoistNonReactStatics from 'hoist-non-react-statics'
-import { withTheme } from '../core/theming'
+import { ThemeContext } from '../core/theming'
 import { buildStyleSheet } from '../util/style-helpers'
 import { ViewProps } from 'react-native'
 import { Theme } from '../styles/defaultTheme'
 
 interface CProps extends ViewProps {
-  className: string
-  theme: Theme
+  className?: string
 }
 
-export default function createPicassoComponent(WrappedComponent: any) {
+const createPicassoComponent = function (WrappedComponent: React.FC<any>) {
   const EnhancedComponent: React.FC<CProps> = React.forwardRef(
     (props, ref: React.ForwardedRef<any>) => {
-      const { className = '', theme, style, ...other } = props
-      const picassoStyle = buildStyleSheet(className, 'custom', theme)
+      const { children, className = '', style, ...others } = props
 
       return (
-        <WrappedComponent
-          ref={ref}
-          style={[{ borderColor: theme.colors?.border }, picassoStyle, style]}
-          {...other}
-        />
+        <ThemeContext.Consumer>
+          {(theme: Theme) => {
+            const picassoStyle = buildStyleSheet(className, 'custom', theme)
+
+            return (
+              <WrappedComponent
+                ref={ref}
+                style={StyleSheet.flatten([
+                  { borderColor: theme.colors?.border },
+                  picassoStyle,
+                  style,
+                ])}
+                {...others}
+              >
+                {children}
+              </WrappedComponent>
+            )
+          }}
+        </ThemeContext.Consumer>
       )
     },
   )
@@ -32,5 +45,7 @@ export default function createPicassoComponent(WrappedComponent: any) {
     WrappedComponent,
   )
 
-  return withTheme(FinalComponent)
+  return <FinalComponent />
 }
+
+export default createPicassoComponent
