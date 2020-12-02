@@ -9,6 +9,7 @@ import { Theme } from '../styles/defaultTheme'
 
 interface CProps extends ViewProps {
   className?: string
+  children?: React.ReactNode
 }
 
 const createPicassoComponent = <P extends object>(
