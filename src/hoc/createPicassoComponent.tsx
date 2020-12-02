@@ -11,9 +11,11 @@ interface CProps extends ViewProps {
   className?: string
 }
 
-const createPicassoComponent = function (WrappedComponent: React.FC<any>) {
-  const EnhancedComponent: React.FC<CProps> = React.forwardRef(
-    (props, ref: React.ForwardedRef<any>) => {
+const createPicassoComponent = <P extends object>(
+  WrappedComponent: React.ComponentType<P>,
+) => {
+  const EnhancedComponent = React.forwardRef<unknown, P & CProps>(
+    (props, ref) => {
       const { children, className = '', style, ...others } = props
 
       return (
@@ -29,7 +31,7 @@ const createPicassoComponent = function (WrappedComponent: React.FC<any>) {
                   picassoStyle,
                   style,
                 ])}
-                {...others}
+                {...(others as P)}
               >
                 {children}
               </WrappedComponent>
@@ -45,7 +47,7 @@ const createPicassoComponent = function (WrappedComponent: React.FC<any>) {
     WrappedComponent,
   )
 
-  return <FinalComponent />
+  return FinalComponent
 }
 
 export default createPicassoComponent

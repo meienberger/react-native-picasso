@@ -12,7 +12,7 @@ export default function createTheming(
     theme: Theme
   }>
   withTheme: (Comp: React.FC<any>) => any
-  useTheme: (overrides: Theme) => Theme
+  useTheme: (overrides?: Theme) => Theme
 } {
   const ThemeContext = React.createContext(defaultTheme)
 
@@ -20,7 +20,7 @@ export default function createTheming(
 
   const withTheme = createWithTheme(ThemeContext)
 
-  const useTheme = (overrides: object) => {
+  const useTheme = (overrides?: Theme): Theme => {
     const theme = React.useContext(ThemeContext)
     const result = React.useMemo(
       () =>

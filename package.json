@@ -1,9 +1,8 @@
 {
   "name": "react-native-picasso",
-  "version": "1.0.30",
+  "version": "1.1.0",
   "description": "",
   "main": "build/index.js",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "run:linter": "eslint 'src/**/*.js'",
