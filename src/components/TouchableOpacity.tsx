@@ -8,8 +8,8 @@ interface CProps extends TouchableOpacityProps {
   className?: string
 }
 
-const PicassoTouchableOpacity: React.FC<CProps> = React.forwardRef(
-  (props, ref: React.ForwardedRef<TouchableOpacity>) => {
+const PicassoTouchableOpacity = React.forwardRef<TouchableOpacity, CProps>(
+  (props, ref) => {
     const { children, className = '', style, ...others } = props
 
     return (

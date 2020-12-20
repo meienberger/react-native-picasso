@@ -8,33 +8,27 @@ interface CProps extends ViewProps {
   className?: string
 }
 
-const PicassoView: React.FC<CProps> = React.forwardRef(
-  (props, ref: React.ForwardedRef<View>) => {
-    const { children, className = '', style, ...others } = props
+const PicassoView = React.forwardRef<View, CProps>((props, ref) => {
+  const { children, className = '', style, ...others } = props
 
-    return (
-      <ThemeContext.Consumer>
-        {(theme: Theme) => {
-          const picassoStyle = buildStyleSheet(className, 'view', theme)
+  return (
+    <ThemeContext.Consumer>
+      {(theme: Theme) => {
+        const picassoStyle = buildStyleSheet(className, 'view', theme)
 
-          return (
-            <View
-              ref={ref}
-              style={[
-                { borderColor: theme.colors?.border },
-                picassoStyle,
-                style,
-              ]}
-              {...others}
-            >
-              {children}
-            </View>
-          )
-        }}
-      </ThemeContext.Consumer>
-    )
-  },
-)
+        return (
+          <View
+            ref={ref}
+            style={[{ borderColor: theme.colors?.border }, picassoStyle, style]}
+            {...others}
+          >
+            {children}
+          </View>
+        )
+      }}
+    </ThemeContext.Consumer>
+  )
+})
 
 PicassoView.displayName = 'PicassoView'
 
