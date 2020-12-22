@@ -6,39 +6,36 @@ import { Theme } from '../styles/defaultTheme'
 
 interface CProps extends TouchableOpacityProps {
   className?: string
+  children?: React.ReactNode
 }
 
-const PicassoTouchableOpacity: React.FC<CProps> = (props) => {
-  const CustomTouchable = React.forwardRef<TouchableOpacity, CProps>(
-    (props, ref) => {
-      const { children, className = '', style, ...others } = props
+const PicassoTouchableOpacity = React.forwardRef<TouchableOpacity, CProps>(
+  (props, ref) => {
+    const { children, className = '', style, ...others } = props
 
-      return (
-        <ThemeContext.Consumer>
-          {(theme: Theme) => {
-            const picassoStyle = buildStyleSheet(className, 'view', theme)
+    return (
+      <ThemeContext.Consumer>
+        {(theme: Theme) => {
+          const picassoStyle = buildStyleSheet(className, 'view', theme)
 
-            return (
-              <TouchableOpacity
-                ref={ref}
-                style={[
-                  { borderColor: theme.colors?.border },
-                  picassoStyle,
-                  style,
-                ]}
-                {...others}
-              >
-                {children}
-              </TouchableOpacity>
-            )
-          }}
-        </ThemeContext.Consumer>
-      )
-    },
-  )
-
-  return <CustomTouchable {...props} />
-}
+          return (
+            <TouchableOpacity
+              ref={ref}
+              style={[
+                { borderColor: theme.colors?.border },
+                picassoStyle,
+                style,
+              ]}
+              {...others}
+            >
+              {children}
+            </TouchableOpacity>
+          )
+        }}
+      </ThemeContext.Consumer>
+    )
+  },
+)
 
 PicassoTouchableOpacity.displayName = 'PicassoTouchableOpacity'
 
