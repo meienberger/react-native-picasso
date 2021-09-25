@@ -1,24 +1,24 @@
 import * as React from 'react'
-import { Text, StyleSheet, TextProps } from 'react-native'
+import { StyleSheet, TextInputProps, TextInput } from 'react-native'
 import { buildStyleSheet } from '../util/style-helpers'
 import { ThemeContext } from '../core/theming'
 import { Theme } from '../styles/defaultTheme'
 
-interface CProps extends TextProps {
+interface CProps extends TextInputProps {
   className?: string
   children?: React.ReactNode
 }
 
-const PicassoText = React.forwardRef<Text, CProps>((props, ref) => {
+const PicassoText = React.forwardRef<TextInput, CProps>((props, ref) => {
   const { children, className = '', style, ...others } = props
 
   return (
     <ThemeContext.Consumer>
       {(theme: Theme) => {
-        const picassoStyle = buildStyleSheet(className, theme, 'text')
+        const picassoStyle = buildStyleSheet(className, theme, 'custom')
 
         return (
-          <Text
+          <TextInput
             ref={ref}
             style={StyleSheet.flatten([
               {
@@ -31,7 +31,7 @@ const PicassoText = React.forwardRef<Text, CProps>((props, ref) => {
             {...others}
           >
             {children}
-          </Text>
+          </TextInput>
         )
       }}
     </ThemeContext.Consumer>

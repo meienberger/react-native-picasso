@@ -16,7 +16,7 @@ const PicassoTouchableOpacity = React.forwardRef<TouchableOpacity, CProps>(
     return (
       <ThemeContext.Consumer>
         {(theme: Theme) => {
-          const picassoStyle = buildStyleSheet(className, 'view', theme)
+          const picassoStyle = buildStyleSheet(className, theme, 'view')
 
           return (
             <TouchableOpacity

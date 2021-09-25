@@ -24,7 +24,7 @@ export const splitAndValidate = (
 
   const split = classname.split(' ')
 
-  const valid = split
+  return split
     .map((declaration) => {
       const [property, value] = declaration.split('-')
 
@@ -36,6 +36,4 @@ export const splitAndValidate = (
       return { property: '', value: '' }
     })
     .filter(Boolean)
-
-  return valid
 }

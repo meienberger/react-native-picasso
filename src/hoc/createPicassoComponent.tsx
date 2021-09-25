@@ -1,10 +1,9 @@
 /* eslint-disable react/display-name */
 import * as React from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, ViewProps } from 'react-native'
 import hoistNonReactStatics from 'hoist-non-react-statics'
 import { ThemeContext } from '../core/theming'
 import { buildStyleSheet } from '../util/style-helpers'
-import { ViewProps } from 'react-native'
 import { Theme } from '../styles/defaultTheme'
 
 interface CProps extends ViewProps {
@@ -22,7 +21,7 @@ const createPicassoComponent = <P extends object>(
       return (
         <ThemeContext.Consumer>
           {(theme: Theme) => {
-            const picassoStyle = buildStyleSheet(className, 'custom', theme)
+            const picassoStyle = buildStyleSheet(className, theme, 'custom')
 
             return (
               <WrappedComponent

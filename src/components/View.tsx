@@ -15,7 +15,7 @@ const PicassoView = React.forwardRef<View, CProps>((props, ref) => {
   return (
     <ThemeContext.Consumer>
       {(theme: Theme) => {
-        const picassoStyle = buildStyleSheet(className, 'view', theme)
+        const picassoStyle = buildStyleSheet(className, theme, 'view')
 
         return (
           <View
